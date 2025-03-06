@@ -1,0 +1,48 @@
+spring:
+    application:
+        name: config-server
+    cloud:
+      config:
+        enabled: true
+        server:
+          git:
+            uri: ${GH_CONFIG_URI}
+            username: ${GH_CONFIG_USERNAME}
+            password: ${GH_CONFIG_PAT}
+server:
+    port: 8888
+
+# Eureka Configuration
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_URL}
+  instance:
+    prefer-ip-address: true
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+
+# App metadata
+info:
+  app:
+    name: Config Server
+    description: Config Server
+    version: 1.0.0
