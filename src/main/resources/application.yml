@@ -12,15 +12,6 @@ spring:
 server:
     port: 8888
 
-# Eureka Configuration
-eureka:
-  client:
-    register-with-eureka: true
-    service-url:
-      defaultZone: ${EUREKA_URL}
-  instance:
-    prefer-ip-address: true
-
 # Actuator Configuration
 management:
   endpoints:
